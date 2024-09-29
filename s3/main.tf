@@ -28,3 +28,22 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
     }
   }
 }
+
+
+#ADDITIONAL RESOURSES FOR DYNAMIC INBOUND RULES
+resource "aws_security_group" "this" {
+  name = var.name
+  description = var.description
+
+  dynamic "ingress" {
+    for_each = var.ingress_rules
+    content {
+      from_port = ingress.value.port
+      to_port = ingress.value.port
+      protocol = "tcp"
+      cidr_blocks = [ingress.value.cidr]
+      description = ingress.value.description
+    }
+  }
+}
+

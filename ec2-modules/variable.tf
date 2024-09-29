@@ -35,11 +35,6 @@ variable "key_name" {
   default     = null
 }
 
-
-
-
-
-
 #ELASTICIP - IF VALUE IS TRUE, IT WILL CREATE IT AND ATTACH TO EC2
 variable "create_elastic_ip" {
   type = bool
