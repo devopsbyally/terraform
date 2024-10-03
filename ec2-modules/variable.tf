@@ -51,3 +51,25 @@ variable "ebs_volume_size" {
   type = number
   default = 5
 }
+
+
+variable "ingress_rules" {
+  description = "inbound rules for the SG"
+  type        = list(object({
+    port        = number
+    cidr        = string
+    description = string
+  }))
+  default     = []
+}
+
+
+variable "egress_rules" {
+  description = "outbound rules for the SG"
+  type        = list(object({
+    port        = number
+    cidr        = string
+    description = string
+  }))
+  default     = []
+}
