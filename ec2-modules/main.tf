@@ -22,7 +22,7 @@ resource "aws_eip" "example" {
 resource "aws_ebs_volume" "additional" {
   count = var.create_ebs_volume ? 1 : 0
   availability_zone = aws_instance.example.availability_zone
-  size             = var.ebs_volume_size
+  size = var.ebs_volume_size
 
   tags = {
     Name = "${var.application}-${var.env}-additional-ebs"
